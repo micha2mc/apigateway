@@ -5,8 +5,7 @@ spring:
     gateway:
       routes:
         - id: filmmanagement-service
-          uri: http://localhost:8081
-          #uri: lb://FILMMANAGEMENT-SERVICE
+          uri: lb://FILMMANAGEMENT-SERVICE
           predicates:
             - Path=/api/movies/**, /api/actors/**, /api/genres/**
 
