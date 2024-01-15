@@ -5,9 +5,13 @@ spring:
     gateway:
       routes:
         - id: filmmanagement-service
-          uri: lb://FILMMANAGEMENT-SERVICE
+          uri: lb://filmmanagement-service
           predicates:
             - Path=/api/movies/**, /api/actors/**, /api/genres/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/reviews/**, /api/users/**
 
   main:
     web-application-type: reactive
