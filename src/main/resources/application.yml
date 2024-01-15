@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: filmmanagement-service
+          uri: http://localhost:8081
+          #uri: lb://FILMMANAGEMENT-SERVICE
+          predicates:
+            - Path=/api/movies/**, /api/actors/**, /api/genres/**
+
+  main:
+    web-application-type: reactive
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.uuid}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+
