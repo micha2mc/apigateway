@@ -11,7 +11,7 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/api/reviews/**, /api/users/**
+            - Path=/api/reviews/**, /api/users/**, /api/roles/**
 
   main:
     web-application-type: reactive
