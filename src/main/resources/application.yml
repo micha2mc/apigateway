@@ -4,8 +4,8 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: filmmanagement-service
-          uri: lb://filmmanagement-service
+        - id: film-service
+          uri: lb://film-service
           predicates:
             - Path=/api/movies/**, /api/actors/**, /api/genres/**
         - id: user-service
