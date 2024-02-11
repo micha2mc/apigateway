@@ -12,18 +12,25 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/reviews/**, /api/users/**, /api/roles/**
+        - id: budget-service
+          uri: lb://budget-service
+          predicates:
+            - Path=/api/budget/**
 
   main:
     web-application-type: reactive
 
 eureka:
   instance:
+    #hostname: eureka-0
     hostname: localhost
     instance-id: ${spring.application.name}:${random.uuid}
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
+      #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
       defaultZone: http://localhost:8761/eureka
 
 
